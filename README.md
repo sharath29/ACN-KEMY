@@ -14,7 +14,7 @@ Satish Mhetre    15CO242
 1. Replace the 'traffic-control' folder in ns-3.27/src with the one in this repository.
 2. Install google protobuf from- https://github.com/google/protobuf
 3. In a terminal run the following commands 
-	1. '''pkg-config --cflags protobuf''' 
-	2. '''pkg-config --cflags protobuf'''
-4. Run '''./waf configure CXXFLAGS=[Output of First Command] LINKFLAGS=[Output of Second Command]'''
+	1. pkg-config --cflags protobuf 
+	2. pkg-config --cflags protobuf
+4. Run ./waf configure CXXFLAGS=[Output of First Command] LINKFLAGS=[Output of Second Command]
 5. Run ./waf
