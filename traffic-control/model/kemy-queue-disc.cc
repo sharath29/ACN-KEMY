@@ -14,6 +14,7 @@
 #include "ns3/double.h"
 #include "ns3/simulator.h"
 #include "ns3/abort.h"
+#include "ns3/nstime.h"
 
 #include "ns3/drop-tail-queue.h"
 #include "ns3/net-device-queue-interface.h"
@@ -95,10 +96,31 @@ KemyQueueDisc::DoEnqueue (Ptr<QueueDiscItem> item)
 
   
 
-  bool retval = GetInternalQueue (0)->Enqueue (item);
+  bool retval ;
 
   // If Queue::Enqueue fails, QueueDisc::DropBeforeEnqueue is called by the
   // internal queue because QueueDisc::AddInternalQueue sets the trace callback
+  if (GetInternalQueue (0)->GetNBytes () + 1 > 2048){
+        DropBeforeEnqueue(item,"queue length");
+        retval = false;
+    }
+    Time *timeObject = new ns3::Time();
+    double tickno = timeObject->GetDouble();
+    const Whisker & current_whisker(_whiskers->use_whisker(_memory));
+     _the_window = current_whisker.window(_the_window);
+    if( GetInternalQueue (0)->GetNBytes () >= _the_window)
+    {
+        _memory.packet_drop(tickno, GetInternalQueue (0)->GetNBytes ());
+        DropBeforeEnqueue(item,"queue length");
+        retval = false;
+    }
+    else
+    {
+        _memory.packet_receive(tickno, GetInternalQueue (0)->GetNBytes ());
+        //q_->enque(item);
+    GetInternalQueue (0)->Enqueue (item);
+        retval = true;
+    }
 
   NS_LOG_LOGIC ("Number packets " << GetInternalQueue (0)->GetNPackets ());
   NS_LOG_LOGIC ("Number bytes " << GetInternalQueue (0)->GetNBytes ());

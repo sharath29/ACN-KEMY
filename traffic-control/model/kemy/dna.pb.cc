@@ -7,6 +7,7 @@
 
 #include <google/protobuf/stubs/common.h>
 #include <google/protobuf/stubs/port.h>
+#include <google/protobuf/stubs/once.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/wire_format_lite_inl.h>
 #include <google/protobuf/descriptor.h>
@@ -18,13 +19,6 @@
 #include "third_party/protobuf/version.h"
 #endif
 // @@protoc_insertion_point(includes)
-
-namespace protobuf_dna_2eproto {
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dna_2eproto ::google::protobuf::internal::SCCInfo<0> scc_info_Memory;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dna_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_MemoryRange;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dna_2eproto ::google::protobuf::internal::SCCInfo<1> scc_info_Whisker;
-extern PROTOBUF_INTERNAL_EXPORT_protobuf_dna_2eproto ::google::protobuf::internal::SCCInfo<2> scc_info_WhiskerTree;
-}  // namespace protobuf_dna_2eproto
 namespace KemyBuffers {
 class WhiskerTreeDefaultTypeInternal {
  public:
@@ -48,9 +42,16 @@ class WhiskerDefaultTypeInternal {
 } _Whisker_default_instance_;
 }  // namespace KemyBuffers
 namespace protobuf_dna_2eproto {
-static void InitDefaultsWhiskerTree() {
+void InitDefaultsWhiskerTreeImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  protobuf_dna_2eproto::InitDefaultsMemoryRange();
+  protobuf_dna_2eproto::InitDefaultsWhisker();
   {
     void* ptr = &::KemyBuffers::_WhiskerTree_default_instance_;
     new (ptr) ::KemyBuffers::WhiskerTree();
@@ -59,14 +60,20 @@ static void InitDefaultsWhiskerTree() {
   ::KemyBuffers::WhiskerTree::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<2> scc_info_WhiskerTree =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 2, InitDefaultsWhiskerTree}, {
-      &protobuf_dna_2eproto::scc_info_MemoryRange.base,
-      &protobuf_dna_2eproto::scc_info_Whisker.base,}};
+void InitDefaultsWhiskerTree() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsWhiskerTreeImpl);
+}
 
-static void InitDefaultsMemoryRange() {
+void InitDefaultsMemoryRangeImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  protobuf_dna_2eproto::InitDefaultsMemory();
   {
     void* ptr = &::KemyBuffers::_MemoryRange_default_instance_;
     new (ptr) ::KemyBuffers::MemoryRange();
@@ -75,13 +82,19 @@ static void InitDefaultsMemoryRange() {
   ::KemyBuffers::MemoryRange::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_MemoryRange =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsMemoryRange}, {
-      &protobuf_dna_2eproto::scc_info_Memory.base,}};
+void InitDefaultsMemoryRange() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsMemoryRangeImpl);
+}
 
-static void InitDefaultsMemory() {
+void InitDefaultsMemoryImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
   {
     void* ptr = &::KemyBuffers::_Memory_default_instance_;
     new (ptr) ::KemyBuffers::Memory();
@@ -90,12 +103,20 @@ static void InitDefaultsMemory() {
   ::KemyBuffers::Memory::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<0> scc_info_Memory =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsMemory}, {}};
+void InitDefaultsMemory() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsMemoryImpl);
+}
 
-static void InitDefaultsWhisker() {
+void InitDefaultsWhiskerImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
+#ifdef GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  ::google::protobuf::internal::InitProtobufDefaultsForceUnique();
+#else
+  ::google::protobuf::internal::InitProtobufDefaults();
+#endif  // GOOGLE_PROTOBUF_ENFORCE_UNIQUENESS
+  protobuf_dna_2eproto::InitDefaultsMemoryRange();
   {
     void* ptr = &::KemyBuffers::_Whisker_default_instance_;
     new (ptr) ::KemyBuffers::Whisker();
@@ -104,15 +125,9 @@ static void InitDefaultsWhisker() {
   ::KemyBuffers::Whisker::InitAsDefaultInstance();
 }
 
-::google::protobuf::internal::SCCInfo<1> scc_info_Whisker =
-    {{ATOMIC_VAR_INIT(::google::protobuf::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsWhisker}, {
-      &protobuf_dna_2eproto::scc_info_MemoryRange.base,}};
-
-void InitDefaults() {
-  ::google::protobuf::internal::InitSCC(&scc_info_WhiskerTree.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_MemoryRange.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Memory.base);
-  ::google::protobuf::internal::InitSCC(&scc_info_Whisker.base);
+void InitDefaultsWhisker() {
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &InitDefaultsWhiskerImpl);
 }
 
 ::google::protobuf::Metadata file_level_metadata[4];
@@ -173,14 +188,15 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 
 void protobuf_AssignDescriptors() {
   AddDescriptors();
+  ::google::protobuf::MessageFactory* factory = NULL;
   AssignDescriptors(
-      "dna.proto", schemas, file_default_instances, TableStruct::offsets,
+      "dna.proto", schemas, file_default_instances, TableStruct::offsets, factory,
       file_level_metadata, NULL, NULL);
 }
 
 void protobuf_AssignDescriptorsOnce() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, protobuf_AssignDescriptors);
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &protobuf_AssignDescriptors);
 }
 
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_PROTOBUF_ATTRIBUTE_COLD;
@@ -210,8 +226,8 @@ void AddDescriptorsImpl() {
 }
 
 void AddDescriptors() {
-  static ::google::protobuf::internal::once_flag once;
-  ::google::protobuf::internal::call_once(once, AddDescriptorsImpl);
+  static GOOGLE_PROTOBUF_DECLARE_ONCE(once);
+  ::google::protobuf::GoogleOnceInit(&once, &AddDescriptorsImpl);
 }
 // Force AddDescriptors() to be called at dynamic initialization time.
 struct StaticDescriptorInitializer {
@@ -238,8 +254,9 @@ const int WhiskerTree::kLeafFieldNumber;
 
 WhiskerTree::WhiskerTree()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dna_2eproto::scc_info_WhiskerTree.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_dna_2eproto::InitDefaultsWhiskerTree();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:KemyBuffers.WhiskerTree)
 }
@@ -247,6 +264,7 @@ WhiskerTree::WhiskerTree(const WhiskerTree& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
       _has_bits_(from._has_bits_),
+      _cached_size_(0),
       children_(from.children_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.has_domain()) {
@@ -263,6 +281,7 @@ WhiskerTree::WhiskerTree(const WhiskerTree& from)
 }
 
 void WhiskerTree::SharedCtor() {
+  _cached_size_ = 0;
   ::memset(&domain_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&leaf_) -
       reinterpret_cast<char*>(&domain_)) + sizeof(leaf_));
@@ -279,7 +298,9 @@ void WhiskerTree::SharedDtor() {
 }
 
 void WhiskerTree::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* WhiskerTree::descriptor() {
   ::protobuf_dna_2eproto::protobuf_AssignDescriptorsOnce();
@@ -287,7 +308,7 @@ const ::google::protobuf::Descriptor* WhiskerTree::descriptor() {
 }
 
 const WhiskerTree& WhiskerTree::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dna_2eproto::scc_info_WhiskerTree.base);
+  ::protobuf_dna_2eproto::InitDefaultsWhiskerTree();
   return *internal_default_instance();
 }
 
@@ -320,7 +341,7 @@ bool WhiskerTree::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:KemyBuffers.WhiskerTree)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -390,7 +411,7 @@ void WhiskerTree::SerializeWithCachedSizes(
   // optional .KemyBuffers.MemoryRange domain = 1;
   if (cached_has_bits & 0x00000001u) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->_internal_domain(), output);
+      1, *domain_, output);
   }
 
   // repeated .KemyBuffers.WhiskerTree children = 2;
@@ -405,7 +426,7 @@ void WhiskerTree::SerializeWithCachedSizes(
   // optional .KemyBuffers.Whisker leaf = 3;
   if (cached_has_bits & 0x00000002u) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->_internal_leaf(), output);
+      3, *leaf_, output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -427,7 +448,7 @@ void WhiskerTree::SerializeWithCachedSizes(
   if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        1, this->_internal_domain(), deterministic, target);
+        1, *domain_, deterministic, target);
   }
 
   // repeated .KemyBuffers.WhiskerTree children = 2;
@@ -442,7 +463,7 @@ void WhiskerTree::SerializeWithCachedSizes(
   if (cached_has_bits & 0x00000002u) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        3, this->_internal_leaf(), deterministic, target);
+        3, *leaf_, deterministic, target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -490,7 +511,9 @@ size_t WhiskerTree::ByteSizeLong() const {
 
   }
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -557,6 +580,7 @@ void WhiskerTree::InternalSwap(WhiskerTree* other) {
   swap(leaf_, other->leaf_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata WhiskerTree::GetMetadata() const {
@@ -580,15 +604,17 @@ const int MemoryRange::kUpperFieldNumber;
 
 MemoryRange::MemoryRange()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dna_2eproto::scc_info_MemoryRange.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_dna_2eproto::InitDefaultsMemoryRange();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:KemyBuffers.MemoryRange)
 }
 MemoryRange::MemoryRange(const MemoryRange& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_) {
+      _has_bits_(from._has_bits_),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.has_lower()) {
     lower_ = new ::KemyBuffers::Memory(*from.lower_);
@@ -604,6 +630,7 @@ MemoryRange::MemoryRange(const MemoryRange& from)
 }
 
 void MemoryRange::SharedCtor() {
+  _cached_size_ = 0;
   ::memset(&lower_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&upper_) -
       reinterpret_cast<char*>(&lower_)) + sizeof(upper_));
@@ -620,7 +647,9 @@ void MemoryRange::SharedDtor() {
 }
 
 void MemoryRange::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* MemoryRange::descriptor() {
   ::protobuf_dna_2eproto::protobuf_AssignDescriptorsOnce();
@@ -628,7 +657,7 @@ const ::google::protobuf::Descriptor* MemoryRange::descriptor() {
 }
 
 const MemoryRange& MemoryRange::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dna_2eproto::scc_info_MemoryRange.base);
+  ::protobuf_dna_2eproto::InitDefaultsMemoryRange();
   return *internal_default_instance();
 }
 
@@ -660,7 +689,7 @@ bool MemoryRange::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:KemyBuffers.MemoryRange)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -718,13 +747,13 @@ void MemoryRange::SerializeWithCachedSizes(
   // optional .KemyBuffers.Memory lower = 11;
   if (cached_has_bits & 0x00000001u) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      11, this->_internal_lower(), output);
+      11, *lower_, output);
   }
 
   // optional .KemyBuffers.Memory upper = 12;
   if (cached_has_bits & 0x00000002u) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      12, this->_internal_upper(), output);
+      12, *upper_, output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -746,14 +775,14 @@ void MemoryRange::SerializeWithCachedSizes(
   if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        11, this->_internal_lower(), deterministic, target);
+        11, *lower_, deterministic, target);
   }
 
   // optional .KemyBuffers.Memory upper = 12;
   if (cached_has_bits & 0x00000002u) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        12, this->_internal_upper(), deterministic, target);
+        12, *upper_, deterministic, target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -790,7 +819,9 @@ size_t MemoryRange::ByteSizeLong() const {
 
   }
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -855,6 +886,7 @@ void MemoryRange::InternalSwap(MemoryRange* other) {
   swap(upper_, other->upper_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata MemoryRange::GetMetadata() const {
@@ -873,21 +905,24 @@ const int Memory::kEwmaQlenFieldNumber;
 
 Memory::Memory()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dna_2eproto::scc_info_Memory.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_dna_2eproto::InitDefaultsMemory();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:KemyBuffers.Memory)
 }
 Memory::Memory(const Memory& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_) {
+      _has_bits_(from._has_bits_),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ewma_qlen_ = from.ewma_qlen_;
   // @@protoc_insertion_point(copy_constructor:KemyBuffers.Memory)
 }
 
 void Memory::SharedCtor() {
+  _cached_size_ = 0;
   ewma_qlen_ = 0;
 }
 
@@ -900,7 +935,9 @@ void Memory::SharedDtor() {
 }
 
 void Memory::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* Memory::descriptor() {
   ::protobuf_dna_2eproto::protobuf_AssignDescriptorsOnce();
@@ -908,7 +945,7 @@ const ::google::protobuf::Descriptor* Memory::descriptor() {
 }
 
 const Memory& Memory::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dna_2eproto::scc_info_Memory.base);
+  ::protobuf_dna_2eproto::InitDefaultsMemory();
   return *internal_default_instance();
 }
 
@@ -930,7 +967,7 @@ bool Memory::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:KemyBuffers.Memory)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(16383u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(16383u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -1023,7 +1060,9 @@ size_t Memory::ByteSizeLong() const {
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -1081,6 +1120,7 @@ void Memory::InternalSwap(Memory* other) {
   swap(ewma_qlen_, other->ewma_qlen_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata Memory::GetMetadata() const {
@@ -1103,15 +1143,17 @@ const int Whisker::kDomainFieldNumber;
 
 Whisker::Whisker()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  ::google::protobuf::internal::InitSCC(
-      &protobuf_dna_2eproto::scc_info_Whisker.base);
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    ::protobuf_dna_2eproto::InitDefaultsWhisker();
+  }
   SharedCtor();
   // @@protoc_insertion_point(constructor:KemyBuffers.Whisker)
 }
 Whisker::Whisker(const Whisker& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_) {
+      _has_bits_(from._has_bits_),
+      _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   if (from.has_domain()) {
     domain_ = new ::KemyBuffers::MemoryRange(*from.domain_);
@@ -1125,6 +1167,7 @@ Whisker::Whisker(const Whisker& from)
 }
 
 void Whisker::SharedCtor() {
+  _cached_size_ = 0;
   ::memset(&domain_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&window_multiple_) -
       reinterpret_cast<char*>(&domain_)) + sizeof(window_multiple_));
@@ -1140,7 +1183,9 @@ void Whisker::SharedDtor() {
 }
 
 void Whisker::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
 const ::google::protobuf::Descriptor* Whisker::descriptor() {
   ::protobuf_dna_2eproto::protobuf_AssignDescriptorsOnce();
@@ -1148,7 +1193,7 @@ const ::google::protobuf::Descriptor* Whisker::descriptor() {
 }
 
 const Whisker& Whisker::default_instance() {
-  ::google::protobuf::internal::InitSCC(&protobuf_dna_2eproto::scc_info_Whisker.base);
+  ::protobuf_dna_2eproto::InitDefaultsWhisker();
   return *internal_default_instance();
 }
 
@@ -1179,7 +1224,7 @@ bool Whisker::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:KemyBuffers.Whisker)
   for (;;) {
-    ::std::pair<::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(16383u);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(16383u);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
@@ -1263,7 +1308,7 @@ void Whisker::SerializeWithCachedSizes(
   // optional .KemyBuffers.MemoryRange domain = 34;
   if (cached_has_bits & 0x00000001u) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      34, this->_internal_domain(), output);
+      34, *domain_, output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1295,7 +1340,7 @@ void Whisker::SerializeWithCachedSizes(
   if (cached_has_bits & 0x00000001u) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        34, this->_internal_domain(), deterministic, target);
+        34, *domain_, deterministic, target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1337,7 +1382,9 @@ size_t Whisker::ByteSizeLong() const {
 
   }
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
   return total_size;
 }
 
@@ -1407,6 +1454,7 @@ void Whisker::InternalSwap(Whisker* other) {
   swap(window_multiple_, other->window_multiple_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_cached_size_, other->_cached_size_);
 }
 
 ::google::protobuf::Metadata Whisker::GetMetadata() const {
@@ -1419,16 +1467,16 @@ void Whisker::InternalSwap(Whisker* other) {
 }  // namespace KemyBuffers
 namespace google {
 namespace protobuf {
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KemyBuffers::WhiskerTree* Arena::CreateMaybeMessage< ::KemyBuffers::WhiskerTree >(Arena* arena) {
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KemyBuffers::WhiskerTree* Arena::Create< ::KemyBuffers::WhiskerTree >(Arena* arena) {
   return Arena::CreateInternal< ::KemyBuffers::WhiskerTree >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KemyBuffers::MemoryRange* Arena::CreateMaybeMessage< ::KemyBuffers::MemoryRange >(Arena* arena) {
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KemyBuffers::MemoryRange* Arena::Create< ::KemyBuffers::MemoryRange >(Arena* arena) {
   return Arena::CreateInternal< ::KemyBuffers::MemoryRange >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KemyBuffers::Memory* Arena::CreateMaybeMessage< ::KemyBuffers::Memory >(Arena* arena) {
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KemyBuffers::Memory* Arena::Create< ::KemyBuffers::Memory >(Arena* arena) {
   return Arena::CreateInternal< ::KemyBuffers::Memory >(arena);
 }
-template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KemyBuffers::Whisker* Arena::CreateMaybeMessage< ::KemyBuffers::Whisker >(Arena* arena) {
+template<> GOOGLE_PROTOBUF_ATTRIBUTE_NOINLINE ::KemyBuffers::Whisker* Arena::Create< ::KemyBuffers::Whisker >(Arena* arena) {
   return Arena::CreateInternal< ::KemyBuffers::Whisker >(arena);
 }
 }  // namespace protobuf
