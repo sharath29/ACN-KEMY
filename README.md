@@ -31,3 +31,8 @@ Satish Mhetre    15CO242
 	2. ```pkg-config --libs protobuf```
 6. Run ```./waf configure CXXFLAGS='Output of First Command' LINKFLAGS='Output of Second Command'```
 7. Run ```./waf```
+
+## Docker method
+1. Run docker build -t kemy-ns3 .
+2. Copy traffic-control folder into docker container
+	1. ```docker cp /traffic-control kemy-ns3:/usr/ns3/ns-3.27/src```
