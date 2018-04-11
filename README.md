@@ -31,6 +31,8 @@ Satish Mhetre    15CO242
 	2. ```pkg-config --libs protobuf```
 6. Run ```./waf configure CXXFLAGS='Output of First Command' LINKFLAGS='Output of Second Command'```
 7. Run ```./waf```
+8. Run ``` export WHISKERS='src/traffic-control/model/kemy/jrats/delta1-alpha0.5-1d-gen.78' ```
+
 
 ## Docker method
 1. Run docker build -t kemy-ns3 .
