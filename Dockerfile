@@ -86,7 +86,6 @@ pkg-conf \
 jemalloc*
 
 
-//protobuf
 RUN apt-get install \
 autoconf \
 automake \

@@ -29,49 +29,53 @@ TypeId KemyQueueDisc::GetTypeId (void)
 {
   static TypeId tid = TypeId ("ns3::KemyQueueDisc")
     .SetParent<QueueDisc> ()
-    .SetGroupName("TrafficControl")
+    .SetGroupName ("TrafficControl")
     .AddConstructor<KemyQueueDisc> ()
-    
+
   ;
 
   return tid;
 }
 
-KemyQueueDisc::KemyQueueDisc () :
-  QueueDisc ()
+KemyQueueDisc::KemyQueueDisc ()
+  : QueueDisc ()
 {
   NS_LOG_FUNCTION (this);
-       
-            const char * filename = getenv("WHISKERS");
-        	if ( !filename ) {
-        		fprintf( stderr, "KemyQueue: Missing WHISKERS environment variable.\n" );
-        		throw 1;
-        	}
 
-        	/* open file */
-        	int fd = open( filename, O_RDONLY );
-        	if ( fd < 0 ) {
-        		perror( "open" );
-        		throw 1;
-        	}
+  const char * filename = getenv ("WHISKERS");
+  if ( !filename )
+    {
+      fprintf ( stderr, "KemyQueue: Missing WHISKERS environment variable.\n" );
+      throw 1;
+    }
 
-        	/* parse whisker definition */
-        	KemyBuffers::WhiskerTree tree;
-        	if ( !tree.ParseFromFileDescriptor( fd ) ) {
-        		fprintf( stderr, "KemyQueue: Could not parse whiskers in \"%s\".\n", filename );
-        		throw 1;
-        	}
+  /* open file */
+  int fd = open ( filename, O_RDONLY );
+  if ( fd < 0 )
+    {
+      perror ( "open" );
+      throw 1;
+    }
 
-        	/* close file */
-        	if ( ::close( fd ) < 0 ) {
-        		perror( "close" );
-        		throw 1;
-        	}
+  /* parse whisker definition */
+  KemyBuffers::WhiskerTree tree;
+  if ( !tree.ParseFromFileDescriptor ( fd ) )
+    {
+      fprintf ( stderr, "KemyQueue: Could not parse whiskers in \"%s\".\n", filename );
+      throw 1;
+    }
 
-        	/* store whiskers */
-        	_whiskers = new WhiskerTree( tree );
+  /* close file */
+  if ( ::close ( fd ) < 0 )
+    {
+      perror ( "close" );
+      throw 1;
+    }
 
-	      
+  /* store whiskers */
+  _whiskers = new WhiskerTree ( tree );
+
+
 }
 
 KemyQueueDisc::~KemyQueueDisc ()
@@ -83,7 +87,7 @@ void
 KemyQueueDisc::DoDispose (void)
 {
   NS_LOG_FUNCTION (this);
-  
+
   QueueDisc::DoDispose ();
 }
 
@@ -94,33 +98,31 @@ KemyQueueDisc::DoEnqueue (Ptr<QueueDiscItem> item)
 {
   NS_LOG_FUNCTION (this << item);
 
-  
 
-  bool retval ;
+
+  bool retval;
 
   // If Queue::Enqueue fails, QueueDisc::DropBeforeEnqueue is called by the
   // internal queue because QueueDisc::AddInternalQueue sets the trace callback
-  if (GetInternalQueue (0)->GetNBytes () + 1 > 2048){
-        DropBeforeEnqueue(item,"queue length");
-        retval = false;
-    }
-    Time *timeObject = new ns3::Time();
-    double tickno = timeObject->GetDouble();
-    const Whisker & current_whisker(_whiskers->use_whisker(_memory));
-     _the_window = current_whisker.window(_the_window);
-    if( GetInternalQueue (0)->GetNBytes () >= _the_window)
+  if (GetInternalQueue (0)->GetNBytes () + 1 > 204800)
     {
-        _memory.packet_drop(tickno, GetInternalQueue (0)->GetNBytes ());
-        DropBeforeEnqueue(item,"queue length");
-        retval = false;
+      DropBeforeEnqueue (item,"queue length exceeded");
+      return false;
     }
-    else
+  Time *timeObject = new ns3::Time ();
+  double tickno = timeObject->GetDouble ();
+  const Whisker & current_whisker (_whiskers->use_whisker (_memory));
+  _the_window = current_whisker.window (_the_window);
+
+  if ( GetInternalQueue (0)->GetNBytes () >= _the_window)
     {
-        _memory.packet_receive(tickno, GetInternalQueue (0)->GetNBytes ());
-        //q_->enque(item);
-    GetInternalQueue (0)->Enqueue (item);
-        retval = true;
+      _memory.packet_drop (tickno, GetInternalQueue (0)->GetNBytes ());
+      DropBeforeEnqueue (item,"queue length");
+      return false;
     }
+
+  _memory.packet_receive (tickno, GetInternalQueue (0)->GetNBytes ());
+  retval = GetInternalQueue (0)->Enqueue (item);
 
   NS_LOG_LOGIC ("Number packets " << GetInternalQueue (0)->GetNPackets ());
   NS_LOG_LOGIC ("Number bytes " << GetInternalQueue (0)->GetNBytes ());
@@ -140,7 +142,7 @@ KemyQueueDisc::InitializeParams (void)
   NS_LOG_FUNCTION (this);
   NS_LOG_INFO ("Initializing Kemy params.");
 
- 
+
 }
 
 
@@ -157,7 +159,7 @@ KemyQueueDisc::DoDequeue (void)
     }
   else
     {
-      
+
       Ptr<QueueDiscItem> item = GetInternalQueue (0)->Dequeue ();
 
       NS_LOG_LOGIC ("Popped " << item);
@@ -191,6 +193,10 @@ bool
 KemyQueueDisc::CheckConfig (void)
 {
   NS_LOG_FUNCTION (this);
+
+  Ptr<InternalQueue> queue = CreateObjectWithAttributes<DropTailQueue<QueueDiscItem> > ();
+  queue->SetMaxPackets (1000);
+  AddInternalQueue (queue);
 
   return true;
 }
